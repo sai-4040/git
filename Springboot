@@ -1,0 +1,280 @@
+    A.sri sailesh Reddy     
+
+Spring Boot Document 
+
+
+
+Requirements:
+●	Jdk.
+●	Embedded maven .
+●	Eclipse or any other text editors for the backend .
+
+Server Tools:
+●	Web tools.
+●	Developer tools.
+●	Testing tools.
+
+________________________________________
+Spring Boot Introduction:
+●	Spring Boot is an open source Java-based framework used to create a Micro Service. It is developed by Pivotal Team. 
+●	It is easy to create a stand-alone and production ready spring applications using Spring Boot.
+
+Micro Service:
+●	Micro Service is an architecture that allows the developers to develop and deploy services independently
+●	Each service running has its own process and this achieves the lightweight model to support business applications.
+What is Spring Boot:
+●	Spring Boot provides a good platform for Java developers to develop a stand-alone and production-grade spring application that you can just run.
+
+
+Need of Spring Boot:
+●	It provides a flexible way to configure Java Beans, XML configurations, and Database Transactions.
+●	It provides a powerful batch processing and manages REST endpoints.
+●	In Spring Boot, everything is auto configured; no manual configurations are needed.
+●	It offers annotation-based spring application.
+●	Eases dependency management.
+●	It includes Embedded Servlet Container.
+
+Working process of Spring Boot:
+●	Spring Boot automatically configures your application based on the dependencies you have added to the project by using @EnableAutoConfiguration annotation.
+●	The entry point of the spring boot application is the class contains @SpringBootApplication annotation and the main method.
+●	Spring Boot automatically scans all the components included in the project by using @ComponentScan annotation.
+Spring Boot Starters:
+●	Handling dependency management is a difficult task for big projects. Spring Boot resolves this problem by providing a set of dependencies for developers convenience.
+
+Actuator dependency:
+●	Spring Boot Starter Actuator dependency is used to monitor and manage your application
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+
+Security dependency:
+●	Spring Boot Starter Security dependency is used for Spring Security.
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+web dependency :
+●	Spring Boot Starter web dependency is used to write a Rest Endpoints. 
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+Thyme Leaf dependency:
+●	Spring Boot Starter Thyme Leaf dependency is used to create a web application. 
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+Test dependency:
+●	Spring Boot Starter Test dependency is used for writing Test cases.
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-test</artifactId>
+</dependency
+Auto Configuration:
+●	 Auto Configuration automatically configures your Spring application based on the JAR dependencies you added in the project.
+●	@EnableAutoConfiguration annotation or @SpringBootApplication annotation to your main class file. Then the  Spring Boot application will be automatically configured.
+Spring Boot Application:
+●	The class should have the main method to run the Spring Boot application. @SpringBootApplication annotation includes Auto- Configuration, Component Scan, and Spring Boot Configuration.
+●	f you added @SpringBootApplication annotation to the class, you do not need to add the @EnableAutoConfiguration,
+ @ComponentScan and 
+@SpringBootConfiguration annotation.
+Component Scan:
+●	application scans all the beans and package declarations when the application initializes.
+●	 @ComponentScan annotation for your class file to scan your components added in your project.
+
+Spring Boot CLI:
+●	Spring Boot CLI is a command line tool and it allows us to run the Groovy scripts.
+Spring Initializer:
+●	Spring Initializr is a web-based tool provided by the Pivotal Web Service. With the help of Spring Initializr, we can easily generate the structure of the Spring Boot Project.
+Spring Initializr Modules:
+●	initializr-actuator: It provides additional information and statistics on project generation. It is an optional module.
+●	initializr-bom: In this module, BOM stands for Bill Of Materials. In Spring Boot, BOM is a special kind of POM that is used to control the versions of a project's dependencies. It provides a central place to define and update those versions. It provides flexibility to add a dependency in our module without worrying about the versions.
+Outside the software world, the BOM is a list of parts, items, assemblies, and other materials required to create products.initializr-docs: It provides documentation.
+●	initializr-generator: It is a core project generation library.
+●	initializr-generator-spring:
+●	initializr-generator-test: It provides a test infrastructure for project generation.
+●	initializr-metadata: It provides metadata infrastructure for various aspects of the projects.
+●	initializr-service-example: It provides custom instances.
+●	initializr-version-resolver: It is an optional module to extract version numbers from an arbitrary POM.
+●	initializr-web: It provides web endpoints for third party clients.
+Maven:
+●	The Spring Boot Maven Plugin provides Spring Boot support in Apache Maven, letting you package executable jar or war archives and run an application “in-place”.
+RequestBody and ResponseBody:
+●	Spring RequestBody and ResponseBody annotations are used in Spring controllers, where we want to bind web requests to method parameters (RequestBody) or method return value (ResponseBody) to Web response. In this article, we will cover some quick examples of using both these annotations.
+●	ResponseBody is not required if we use @RestController annotation. More about @Restcontroller can be found here @RestController.
+
+Serialization:
+●	Data sent over HTTP to server resources (Like a REST Controller) needs to be converted from serialized version to Objects. We can have different types of REST controllers based on the payload they support. For instance, we can design the REST controller to accept/send XML, JSON, TEXT, or HTML payloads/response.
+●	The Controller then should be able to read those data acts on it and return the response. Spring uses HTTP Message converters to convert the HTTP request body into domain object [deserialize request body to domain object], and to convert Domain object back to HTTP response body while returning the response. Spring provides a number of MessageConvertes like bellow, StringHttpMessageConverter: Read Write String
+
+@RequestBody annotations:
+●	Typically in each controller, we can have multiple methods. Each method is tied to a specific HTTP request path via @RequestMapping. That's how Spring knows for an incoming request which method needs to be invoked. If a method parameter is annotated with @RequestBody, Spring will bind the incoming HTTP request body (payload) to the parameter of the respective method tied to the request path.
+
+@ResponseBody Annotation:
+●	@RequestBody annotation the @ResponseBody annotation is used to convert the return type of the method to the HTTP response. Here also Spring will use Message Converter to convert the return type of the method to the HTTP response body, set the HTTP headers, and HTTP status.
+
+Dependency Management:
+●	Spring Boot team provides a list of dependencies to support the Spring Boot version for its every release.
+●	 Spring Boot automatically configures the dependencies version based on the release. Remember that when you upgrade the Spring Boot version, dependencies also will upgrade automatically.
+
+Maven Dependency:
+●	we should inherit the Spring Boot Starter parent project to manage the Spring Boot Starters dependencies. For this, simply we can inherit the starter parent in our pom.xml file as shown below.
+
+Gradle Dependency:
+●	We can import the Spring Boot Starters dependencies directly into build.gradle file. We do not need Spring Boot start Parent dependency like Maven for Gradle.
+
+Default package:
+●	class that does not have any package declaration is considered as a default package. Note that generally a default package declaration is not recommended. 
+●	Spring Boot will cause issues such as malfunctioning of Auto Configuration or Component Scan, when you use default package.
+
+Dependency Injection:
+●	Dependency injection in Spring Boot is no different from the dependency injection in Spring framework. You can use any of the standard Spring Framework techniques to define your beans and their injected dependencies.
+●	SpringBoot suggests using @ComponentScan (to find your beans) and using @Autowired (to do constructor injection).
+Command Line Properties:
+●	Application converts the command line properties into Spring Boot Environment properties.
+●	Spring Boot uses the 8080 port number to start the Tomcat. Let us learn how change the port number by using command line properties.
+
+
+Properties File:
+●	Properties files are used to keep ‘N’ number of properties in a single file to run the application in a different environment.
+●	Spring Boot, properties are kept in the application.properties file under the classpath.
+YAML File:
+●	Spring Boot supports YAML based properties configurations to run the application. Instead of application.properties, we can use application.yml file.
+Externalized Properties:
+●	Instead of keeping the properties file under classpath, we can keep the properties in different location or path. While running the JAR file, we can specify the properties file path.
+@Value Annotation:
+●	@Value annotation is used to read the environment or application property value in Java code.
+●	@Value("${property_key_name}")
+●	@Value("${spring.application.name}").
+●	syntax to read the spring.application.name property value in Java variable by using @Value annotation.
+Active Profile:
+●	It supports different properties based on the Spring active profile.
+●	Let us understand how to have Spring active profile in application.properties. By default, application. properties will be used to run the Spring Boot application.
+Spring active profile for application.yml:
+●	We can keep the Spring active profile properties in the single application.yml file. No need to use the separate file like application.properties.
+
+o	@GetMapping: It maps the HTTP GET requests on the specific handler method. It is used to create a web service endpoint that fetches It is used instead of using: @RequestMapping(method = RequestMethod.GET)
+o	@PostMapping: It maps the HTTP POST requests on the specific handler method. It is used to create a web service endpoint that creates It is used instead of using: @RequestMapping(method = RequestMethod.POST)
+o	@PutMapping: It maps the HTTP PUT requests on the specific handler method. It is used to create a web service endpoint that creates or updates It is used instead of using: @RequestMapping(method = RequestMethod.PUT)
+o	@DeleteMapping: It maps the HTTP DELETE requests on the specific handler method. It is used to create a web service endpoint that deletes a resource. It is used instead of using: @RequestMapping(method = RequestMethod.DELETE)
+o	@PatchMapping: It maps the HTTP PATCH requests on the specific handler method. It is used instead of using: @RequestMapping(method = RequestMethod.PATCH)
+o	@RequestBody: It is used to bind HTTP request with an object in a method parameter. Internally it uses HTTP MessageConverters to convert the body of the request. When we annotate a method parameter with @RequestBody, the Spring framework binds the incoming HTTP request body to that parameter.
+o	@ResponseBody: It binds the method return value to the response body. It tells the Spring Boot Framework to serialize a return an object into JSON and XML format.
+o	@PathVariable: It is used to extract the values from the URI. It is most suitable for the RESTful web service, where the URL contains a path variable. We can define multiple @PathVariable in a method.
+o	@RequestParam: It is used to extract the query parameters form the URL. It is also known as a query parameter. It is most suitable for web applications. It can specify default values if the query parameter is not present in the URL.
+o	@RequestHeader: It is used to get the details about the HTTP request headers. We use this annotation as a method parameter. The optional elements of the annotation are name, required, value, defaultValue. For each detail in the header, we should specify separate annotations. We can use it multiple time in a method
+o	@RestController: It can be considered as a combination of @Controller and @ResponseBody annotations. The @RestController annotation is itself annotated with the @ResponseBody annotation. It eliminates the need for annotating each method with @ResponseBody.
+o	@RequestAttribute: It binds a method parameter to request attribute. It provides convenient access to the request attributes from a controller method. With the help of @RequestAttribute annotation, we can access objects that are populated on the server-side.
+Rest Controller:
+●	The @RestController annotation is used to define the RESTful web services. It serves JSON, XML and custom response.
+
+Request Mapping
+●	The @RequestMapping annotation is used to define the Request URI to access the REST Endpoints.
+●	 We can define Request method to consume and produce object. The default request method is GET.
+Path Variable:
+●	 @PathVariable annotation is used to define the custom or dynamic request URI. The Path variable in request URI is defined as curly braces {} 
+Request Parameter:
+●	@RequestParam annotation is used to read the request parameters from the Request URL. By default, it is a required parameter.
+GET API:
+●	HTTP request method is GET. This method does not require any Request Body. You can send request parameters and path variables to define the custom or dynamic URL.
+●	 
+POST API:
+●	HTTP POST request is used to create a resource. This method contains the Request Body. We can send request parameters and path variables to define the custom or dynamic URL.
+●	 
+
+PUT API:
+●	HTTP PUT request is used to update the existing resource. This method contains a Request Body. We can send request parameters and path variables to define the custom or dynamic URL.
+●	 
+DELETE API:
+●	HTTP Delete request is used to delete the existing resource. This method does not contain any Request Body. We can send request parameters and path variables to define the custom or dynamic URL.
+●	 
+
+
+Exception Handler:
+●	@ExceptionHandler is an annotation used to handle the specific exceptions and sending the custom responses to the client.
+
+@Component :
+●	@Component class that supports it and it should implement the HandlerInterceptor interface.
+●	preHandle() method − This is used to perform operations before sending the request to the controller. This method should return true to return the response to the client.
+●	postHandle() method − This is used to perform operations before sending the response to the client.
+●	afterCompletion() method − This is used to perform operations after completing the request and response.
+Custom Port:
+●	application.properties file, we can set custom port number for the property server.port
+●	server.port = 9090
+●	application.yml file, you can find as follows −
+●	server: 
+●	   port: 9090
+
+Random Port:
+●	 application.properties file, we can set random port number for the property server.port
+●	server.port = 0
+●	application.yml file, you can find as follows −
+●	server: 
+●	   port: 0
+●	server.port number is 0 while starting the Spring Boot application, Tomcat uses the random port number.
+
+Product Service API(s):
+●	 Product Service API(s) to store, retrieve, update and delete the products. We wrote the business logic in @RestController class file itself. Now, we are going to move the business logic code from controller to service component.
+
+Thymeleaf Templates:
+●	Thymeleaf converts your files into well-formed XML files. It contains 6 types of templates.
+●	XML
+●	Valid XML
+●	XHTML
+●	Valid XHTML
+●	HTML5
+●	Legacy HTML5.
+Web Application
+●	Thymeleaf templates to create a web application in Spring Boot. You will have to follow the below steps to create a web application in Spring Boot by using Thymeleaf.
+
+RESTful Web Services by using jQuery AJAX:
+●	 Spring Boot web application and write a controller class files which is used to redirects into the HTML file to consumes the RESTful web services.
+●	We need to add the Spring Boot starter Thymeleaf and Web dependency in our build configuration file.
+CORS in Controller Method:
+●	RESTful web service by using @CrossOrigin annotation for the controller method.
+●	@CrossOrigin annotation supports specific REST API, and not for the entire application.
+Dependencies:
+●	It need the Spring Boot Starter Web and Spring Boot Starter Thymeleaf dependency to develop a web application in Spring Boo
+LocaleChangeInterceptor:
+●	LocaleChangeInterceptor is a used to change the new Locale based on the value of the language parameter added to a request.
+Messages Sources
+●	the message properties should be used as key pair values. If any properties are not found on the locale, the application uses the default property from messages.properties file.
+Java Cron:
+●	Java Cron expressions are used to configure the instances of CronTrigger, a subclass of org.quartz.Trigger.
+
+
+Application Server:
+●	An application server is a type of server designed to install, operate and host applications and associated services for end users, IT services and organizations.
+
+Architecture of Web Applications:
+●	Web Application Architecture constitutes all components, sub-components, and external application interchanges of the final web application. 
+
+Jsr validations:
+●	JSR-303 bean validation is an specification whose objective is to standardize the validation of Java beans through annotations. 
+
+Thymeleaf Fragments:
+●	Thymeleaf fragments let you break down your templates into reusable layout elements. For example, Several pages may have different content but still have the same header and footer.
+
+JPA/Hibernate:
+●	Databases are designed with Tables/Relations. Java objects are designed using OOPS. We would want to store the data from objects into tables and vice-versa.
+
+Spring Boot Mockito :
+●	Mockito is a very popular library to support testing. It allows us to replace real objects with “mocks”, i.e. with objects that are not the real thing and whose behavior we can control within our test. 
+
+Jackson:
+●	Jackson library is composed of three components: Jackson Databind, Core, and Annotation. Jackson Databind has internal dependencies on Jackson Core and Annotation
+
+Dynamic components:
+●	dynamic component development, component axes are like little elven tricksters, sabotaging your good intentions.
+
+Json viewer:
+●	Spring Boot by default supports JSON request and responses, we no need to add any dependencies. A simple annotation called @RequestBody .
+
+Embedded servlet container:
+●	Embedded servlet-containers you only have the “deploy new application version” option because the version of the embedded container is defined inside the project’s Maven or Gradle config.
+
